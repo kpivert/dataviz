@@ -13,7 +13,7 @@ To explore these relationships, I begin with a plot of head length against body 
 (ref:blue-jays-scatter) Head length (measured from the tip of the bill to the back of the head, in mm) versus body mass (in gram), for 123 blue jays. Each dot corresponds to one bird. There is a moderate tendency for heavier birds to have longer heads. Data source: Keith Tarvin, Oberlin College
 
 <div class="figure" style="text-align: center">
-<img src="visualizing_associations_files/figure-html/blue-jays-scatter-1.png" alt="(ref:blue-jays-scatter)" width="1050" />
+<img src="visualizing_associations_files/figure-html/blue-jays-scatter-1.png" alt="(ref:blue-jays-scatter)" width="525" />
 <p class="caption">(\#fig:blue-jays-scatter)(ref:blue-jays-scatter)</p>
 </div>
 
@@ -22,7 +22,7 @@ The blue jay dataset contains both male and female birds, and we may want to kno
 (ref:blue-jays-scatter-sex) Head length versus body mass for 123 blue jays. The birds' sex is indicated by color. At the same body mass, male birds tend to have longer heads (and specifically, longer bills) than female birds. Data source: Keith Tarvin, Oberlin College
 
 <div class="figure" style="text-align: center">
-<img src="visualizing_associations_files/figure-html/blue-jays-scatter-sex-1.png" alt="(ref:blue-jays-scatter-sex)" width="1050" />
+<img src="visualizing_associations_files/figure-html/blue-jays-scatter-sex-1.png" alt="(ref:blue-jays-scatter-sex)" width="525" />
 <p class="caption">(\#fig:blue-jays-scatter-sex)(ref:blue-jays-scatter-sex)</p>
 </div>
 
@@ -33,11 +33,11 @@ Because the head length is defined as the distance from the tip of the bill to t
 
 
 <div class="figure" style="text-align: center">
-<img src="visualizing_associations_files/figure-html/blue-jays-scatter-bubbles-1.png" alt="(ref:blue-jays-scatter-bubbles)" width="1050" />
+<img src="visualizing_associations_files/figure-html/blue-jays-scatter-bubbles-1.png" alt="(ref:blue-jays-scatter-bubbles)" width="825" />
 <p class="caption">(\#fig:blue-jays-scatter-bubbles)(ref:blue-jays-scatter-bubbles)</p>
 </div>
 
-Bubble charts have the disadvantage that they show the same types of variables, quantitative variables, with two different types of scales, position and size. This makes it difficult to visually ascertain the strengths of associations between the various variables. Humans are much better at judging the position of objects than their size. And in particular, small size differences are virtually impossible to see. In 
+Bubble charts have the disadvantage that they show the same types of variables, quantitative variables, with two different types of scales, position and size. This makes it difficult to visually ascertain the strengths of associations between the various variables. Moreover, differences between data values encoded as bubble size are harder to perceive than differences between data values encoded as position. Because even the largest bubbles need to be somewhat small compared to the total figure size, the size differences between even the largest and the smallest bubbles are necessarily small. Consequently, smaller differences in data values will correspond to very small size differences that can be virtually impossible to see. In 
 Figure \@ref(fig:blue-jays-scatter-bubbles), I used a size mapping that visually amplified the difference between the smallest skulls (around 28mm) and the largest skulls (around 34mm), and yet it is difficult to determine what the relationship is between skull size and either body mass or head length.
 
 As an alternative to a bubble chart, it may be preferable to show an all-against-all matrix of scatter plots, where each individual plot shows two data dimensions (Figure \@ref(fig:blue-jays-scatter-all)). This figure shows clearly that the relationship between skull size and body mass is comparable for female and male birds except that the female birds tend to be somewhat smaller. However, the same is not true for the relationship between head length and body mass. There is a clear separation by sex. Male birds tend to have longer bills than female birds, all else equal.
@@ -47,7 +47,7 @@ As an alternative to a bubble chart, it may be preferable to show an all-against
 
 
 <div class="figure" style="text-align: center">
-<img src="visualizing_associations_files/figure-html/blue-jays-scatter-all-1.png" alt="(ref:blue-jays-scatter-all)" width="1260" />
+<img src="visualizing_associations_files/figure-html/blue-jays-scatter-all-1.png" alt="(ref:blue-jays-scatter-all)" width="750" />
 <p class="caption">(\#fig:blue-jays-scatter-all)(ref:blue-jays-scatter-all)</p>
 </div>
 
@@ -59,7 +59,7 @@ When we have more than three to four quantiative variables, all-against-all scat
 (ref:correlations) Examples of correlations of different magnitude and direction, with associated correlation coefficient *r*. In both rows, from left to right correlations go from weak to strong. In the top row the correlations are positive (larger values for one quantity are associated with larger values for the other) and in the bottom row they are negative (larger values for one quantity are associated with smaller values for the other). In all six panels, the sets of *x* and *y* values are identical, but the pairings between individual *x* and *y* values have been reshuffled to generate the specified correlation coefficients.
 
 <div class="figure" style="text-align: center">
-<img src="visualizing_associations_files/figure-html/correlations-1.png" alt="(ref:correlations)" width="1260" />
+<img src="visualizing_associations_files/figure-html/correlations-1.png" alt="(ref:correlations)" width="750" />
 <p class="caption">(\#fig:correlations)(ref:correlations)</p>
 </div>
 
@@ -75,7 +75,7 @@ Visualizations of correlation coefficients are called *correlograms*. To illustr
 (ref:forensic-correlations1) Correlations in mineral content for 214 samples of glass fragments obtained during forensic work. The dataset contains seven variables measuring the amounts of magnesium (Mg), calcium (Ca), iron (Fe), potassium (K), sodium (Na), aluminum (Al), and barium (Ba) found in each glass fragment. The colored tiles represents the correlations between pairs of these variables. Data source: B. German
 
 <div class="figure" style="text-align: center">
-<img src="visualizing_associations_files/figure-html/forensic-correlations1-1.png" alt="(ref:forensic-correlations1)" width="840" />
+<img src="visualizing_associations_files/figure-html/forensic-correlations1-1.png" alt="(ref:forensic-correlations1)" width="420" />
 <p class="caption">(\#fig:forensic-correlations1)(ref:forensic-correlations1)</p>
 </div>
 
@@ -84,7 +84,7 @@ One weakness of the correlogram of Figure \@ref(fig:forensic-correlations1) is t
 (ref:forensic-correlations2) Correlations in mineral content for forensic glass samples. The color scale is identical to Figure \@ref(fig:forensic-correlations1). However, now the magnitude of each correlation is also encoded in the size of the colored circles. This choice visually deemphasizes cases with correlations near zero. Data source: B. German
 
 <div class="figure" style="text-align: center">
-<img src="visualizing_associations_files/figure-html/forensic-correlations2-1.png" alt="(ref:forensic-correlations2)" width="840" />
+<img src="visualizing_associations_files/figure-html/forensic-correlations2-1.png" alt="(ref:forensic-correlations2)" width="420" />
 <p class="caption">(\#fig:forensic-correlations2)(ref:forensic-correlations2)</p>
 </div>
 
@@ -99,7 +99,7 @@ There are many techniques for dimension reduction. I will discuss only one techn
 (ref:blue-jays-PCA) Example principal components (PC) analysis in two dimensions. (a) The original data. As example data, I am using the head-length and skull-size measurements from the blue jays dataset. Female and male birds are distinguished by color, but this distinction has no effect on the PC analysis. (b) As the first step in PCA, we scale the original data values to zero mean and unit variance. We then we define new variables (the principal components, PCs) along the directions of maximum variation in the data. (c) Finally, we project the data into the new coordinates. Mathematically, this projection is equivalent to a rotation of the data points around the origin. In the 2D example shown here, the data points are rotated clockwise by 45 degrees. 
 
 <div class="figure" style="text-align: center">
-<img src="visualizing_associations_files/figure-html/blue-jays-PCA-1.png" alt="(ref:blue-jays-PCA)" width="1785" />
+<img src="visualizing_associations_files/figure-html/blue-jays-PCA-1.png" alt="(ref:blue-jays-PCA)" width="825" />
 <p class="caption">(\#fig:blue-jays-PCA)(ref:blue-jays-PCA)</p>
 </div>
 
@@ -110,7 +110,7 @@ First, we look at the component composition (Figure \@ref(fig:forensic-PCA-rotat
 (ref:forensic-PCA-rotation) Composition of the first two components in a principal components analysis (PCA) of the forensic glass dataset. Component one (PC 1) measures primarily the amount of aluminum, barium, sodium, and magnesium contents in a glass fragment, whereas component two (PC 2) measures primarily the amount of calcium and potassium content, and to some extent the amount of aluminum and magnesium.
 
 <div class="figure" style="text-align: center">
-<img src="visualizing_associations_files/figure-html/forensic-PCA-rotation-1.png" alt="(ref:forensic-PCA-rotation)" width="945" />
+<img src="visualizing_associations_files/figure-html/forensic-PCA-rotation-1.png" alt="(ref:forensic-PCA-rotation)" width="472.5" />
 <p class="caption">(\#fig:forensic-PCA-rotation)(ref:forensic-PCA-rotation)</p>
 </div>
 
@@ -120,20 +120,20 @@ Next, we project the original data into the principal components space (Figure \
 
 
 <div class="figure" style="text-align: center">
-<img src="visualizing_associations_files/figure-html/forensic-PCA-1.png" alt="(ref:forensic-PCA)" width="1260" />
+<img src="visualizing_associations_files/figure-html/forensic-PCA-1.png" alt="(ref:forensic-PCA)" width="750" />
 <p class="caption">(\#fig:forensic-PCA)(ref:forensic-PCA)</p>
 </div>
 
 ## Paired data {#associations-paired-data}
 
-A special case of multivariate quantitative data is paired data: Data where there are two or more measurements of the same quantity under slightly different conditions. Examples include two comparable measurements on each subject (e.g., the length of the right and the left arm of a person), repeat measurements on the same subject at different time points (e.g., a person's weight at two different times during the year), or measurements on two closely related subjects (e.g., the heights of two identical twins). For paired data, our null hypothesis is that each pair of measurements is identical or nearly so, whereas there is substantial variation between pairs. Two twins will be approximately of the same height but will differ in height from other twins. Therefore, we need to choose visualizations that highlight deviations from this null hypothesis.
+A special case of multivariate quantitative data is paired data: Data where there are two or more measurements of the same quantity under slightly different conditions. Examples include two comparable measurements on each subject (e.g., the length of the right and the left arm of a person), repeat measurements on the same subject at different time points (e.g., a person's weight at two different times during the year), or measurements on two closely related subjects (e.g., the heights of two identical twins). For paired data, it is reasonable to assume that the two measurements belonging to a pair are more similar to each other than to the measurements belonging to other pairs. Two twins will be approximately of the same height but will differ in height from other twins. Therefore, for paired data, we need to choose visualizations that highlight any differences between the paired measurements.
 
-An excellent choice for paired data is a simple scatter plot on top of a diagonal line marking *x* = *y*. If our null hypothesis is true, all points in the sample will be scattered symmetrically around this line. A systematic deviation from the null hypothesis, by contrast, will be visible in a systematic shift of the data points up or down relative to the diagonal. As an example, consider the carbon dioxide (CO<sub>2</sub>) emissions per person, measured for 166 countries both in 1970 and in 2010 (Figure \@ref(fig:CO2-paired-scatter)). This example highlights two common features of paired data. First, most points are relatively close to the diagonal line. Even though CO<sub>2</sub> emissions vary over nearly four orders of magnitude among countries, they are fairly consistent within each country over a 40-year time span. Second, the points are systematically shifted upwards relative to the diagonal line. The majority of countries has seen an increase in CO<sub>2</sub> emissions over the 40 years considered.
+An excellent choice in this case is a simple scatter plot on top of a diagonal line marking *x* = *y*. In such a plot, if the only difference between the two measurements of each pair is random noise, then all points in the sample will be scattered symmetrically around this line. Any systematic differences between the paired measurements, by contrast, will be visible in a systematic shift of the data points up or down relative to the diagonal. As an example, consider the carbon dioxide (CO<sub>2</sub>) emissions per person, measured for 166 countries both in 1970 and in 2010 (Figure \@ref(fig:CO2-paired-scatter)). This example highlights two common features of paired data. First, most points are relatively close to the diagonal line. Even though CO<sub>2</sub> emissions vary over nearly four orders of magnitude among countries, they are fairly consistent within each country over a 40-year time span. Second, the points are systematically shifted upwards relative to the diagonal line. The majority of countries has seen an increase in CO<sub>2</sub> emissions over the 40 years considered.
 
 (ref:CO2-paired-scatter) Carbon dioxide (CO<sub>2</sub>) emissions per person in 1970 and 2010, for 166 countries. Each dot represents one country. The diagonal line represents identical CO<sub>2</sub> emissions in 1970 and 2010. The points are systematically shifted upwards relative to the diagonal line: In the majority of countries, emissions were higher in 2010 than in 1970. Data source: Carbon Dioxide Information Analysis Center
 
 <div class="figure" style="text-align: center">
-<img src="visualizing_associations_files/figure-html/CO2-paired-scatter-1.png" alt="(ref:CO2-paired-scatter)" width="1050" />
+<img src="visualizing_associations_files/figure-html/CO2-paired-scatter-1.png" alt="(ref:CO2-paired-scatter)" width="525" />
 <p class="caption">(\#fig:CO2-paired-scatter)(ref:CO2-paired-scatter)</p>
 </div>
 
@@ -142,7 +142,7 @@ Scatter plots such as Figure \@ref(fig:CO2-paired-scatter) work well when we hav
 (ref:CO2-slopegraph) Carbon dioxide (CO<sub>2</sub>) emissions per person in 2000 and 2010, for the ten countries with the largest difference between these two years. Data source: Carbon Dioxide Information Analysis Center
 
 <div class="figure" style="text-align: center">
-<img src="visualizing_associations_files/figure-html/CO2-slopegraph-1.png" alt="(ref:CO2-slopegraph)" width="945" />
+<img src="visualizing_associations_files/figure-html/CO2-slopegraph-1.png" alt="(ref:CO2-slopegraph)" width="472.5" />
 <p class="caption">(\#fig:CO2-slopegraph)(ref:CO2-slopegraph)</p>
 </div>
 
@@ -152,7 +152,7 @@ Slopegraphs have one important advantage over scatter plots: They can be used to
 (ref:CO2-slopegraph-three-year) CO<sub>2</sub> emissions per person in 2000, 2005, and 2010, for the ten countries with the largest difference between the years 2000 and 2010. Data source: Carbon Dioxide Information Analysis Center
 
 <div class="figure" style="text-align: center">
-<img src="visualizing_associations_files/figure-html/CO2-slopegraph-three-year-1.png" alt="(ref:CO2-slopegraph-three-year)" width="945" />
+<img src="visualizing_associations_files/figure-html/CO2-slopegraph-three-year-1.png" alt="(ref:CO2-slopegraph-three-year)" width="472.5" />
 <p class="caption">(\#fig:CO2-slopegraph-three-year)(ref:CO2-slopegraph-three-year)</p>
 </div>
 

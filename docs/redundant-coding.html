@@ -12,7 +12,7 @@
   <meta property="og:title" content="Fundamentals of Data Visualization" />
   <meta property="og:type" content="book" />
   
-  
+  <meta property="og:image" content="cover.png" />
   <meta property="og:description" content="A guide to making visualizations that accurately reflect the data, tell a story, and look professional." />
   <meta name="github-repo" content="clauswilke/dataviz" />
 
@@ -20,7 +20,7 @@
   <meta name="twitter:title" content="Fundamentals of Data Visualization" />
   
   <meta name="twitter:description" content="A guide to making visualizations that accurately reflect the data, tell a story, and look professional." />
-  
+  <meta name="twitter:image" content="cover.png" />
 
 <meta name="author" content="Claus O. Wilke">
 
@@ -198,7 +198,7 @@
 <li class="chapter" data-level="23.3" data-path="balance-data-context.html"><a href="balance-data-context.html#paired-data"><i class="fa fa-check"></i><b>23.3</b> Paired data</a></li>
 <li class="chapter" data-level="23.4" data-path="balance-data-context.html"><a href="balance-data-context.html#summary"><i class="fa fa-check"></i><b>23.4</b> Summary</a></li>
 </ul></li>
-<li class="chapter" data-level="24" data-path="small-axis-labels.html"><a href="small-axis-labels.html"><i class="fa fa-check"></i><b>24</b> Your axis labels are too small</a></li>
+<li class="chapter" data-level="24" data-path="small-axis-labels.html"><a href="small-axis-labels.html"><i class="fa fa-check"></i><b>24</b> Use larger axis labels</a></li>
 <li class="chapter" data-level="25" data-path="avoid-line-drawings.html"><a href="avoid-line-drawings.html"><i class="fa fa-check"></i><b>25</b> Avoid line drawings</a></li>
 <li class="chapter" data-level="26" data-path="no-3d.html"><a href="no-3d.html"><i class="fa fa-check"></i><b>26</b> Don’t go 3D</a><ul>
 <li class="chapter" data-level="26.1" data-path="no-3d.html"><a href="no-3d.html#avoid-gratuitous-3d"><i class="fa fa-check"></i><b>26.1</b> Avoid gratuitous 3D</a></li>
@@ -268,7 +268,7 @@ Figure 20.1: Sepal width versus sepal length for three different iris species (<
 <p>Surprisingly, the green and blue points look more distinct for people with red–green color-vision-deficiency (deuteranomaly or protanomaly) than for people with normal color vision (compare Figure <a href="redundant-coding.html#fig:iris-scatter-one-shape-cvd">20.2</a>, top row, to Figure <a href="redundant-coding.html#fig:iris-scatter-one-shape">20.1</a>). On the other hand, for people with blue–yellow deficiency (tritanomaly) the blue and green points look very similar (Figure <a href="redundant-coding.html#fig:iris-scatter-one-shape-cvd">20.2</a>, bottom left). And if we print out the figure in gray-scale (i.e., we <em>desaturate</em> the figure), we cannot distinguish any of the iris species (Figure <a href="redundant-coding.html#fig:iris-scatter-one-shape-cvd">20.2</a>, bottom right).</p>
 
 <div class="figure" style="text-align: center"><span id="fig:iris-scatter-one-shape-cvd"></span>
-<img src="redundant_coding_files/figure-html/iris-scatter-one-shape-cvd-1.png" alt="Color-vision-deficiency simulation of Figure 20.1." width="816" />
+<img src="redundant_coding_files/figure-html/iris-scatter-one-shape-cvd-1.png" alt="Color-vision-deficiency simulation of Figure 20.1." width="754.285714285714" />
 <p class="caption">
 Figure 20.2: Color-vision-deficiency simulation of Figure <a href="redundant-coding.html#fig:iris-scatter-one-shape">20.1</a>.
 </p>
@@ -283,7 +283,7 @@ Figure 20.3: Sepal width versus sepal length for three different iris species. C
 </div>
 
 <div class="figure" style="text-align: center"><span id="fig:iris-scatter-three-shapes-cvd"></span>
-<img src="redundant_coding_files/figure-html/iris-scatter-three-shapes-cvd-1.png" alt="Color-vision-deficiency simulation of Figure 20.3. Because of the use of different point shapes, even the fully desaturated gray-scale version of the figure is legible." width="816" />
+<img src="redundant_coding_files/figure-html/iris-scatter-three-shapes-cvd-1.png" alt="Color-vision-deficiency simulation of Figure 20.3. Because of the use of different point shapes, even the fully desaturated gray-scale version of the figure is legible." width="754.285714285714" />
 <p class="caption">
 Figure 20.4: Color-vision-deficiency simulation of Figure <a href="redundant-coding.html#fig:iris-scatter-three-shapes">20.3</a>. Because of the use of different point shapes, even the fully desaturated gray-scale version of the figure is legible.
 </p>
@@ -291,18 +291,18 @@ Figure 20.4: Color-vision-deficiency simulation of Figure <a href="redundant-cod
 <p>Changing the point shape is a simple strategy for scatter plots but it doesn’t necessarily work for other types of plots. In line plots, we could change the line type (solid, dashed, dotted, etc., see also Figure <a href="aesthetic-mapping.html#fig:common-aesthetics">2.1</a>), but using dashed or dotted lines often yields sub-optimal results. In particular, dashed or dotted lines usually don’t look good unless they are perfectly straight or only gently curved, and in either case they create visual noise. Also, it frequently requires significant mental effort to match different types of dash or dot–dash patterns from the plot to the legend. So what do we do with a visualization such as Figure <a href="redundant-coding.html#fig:tech-stocks-bad-legend">20.5</a>, which uses lines to show the change in stock price over time for four different major tech companies?</p>
 
 <div class="figure" style="text-align: center"><span id="fig:tech-stocks-bad-legend"></span>
-<img src="redundant_coding_files/figure-html/tech-stocks-bad-legend-1.png" alt="Stock price over time for four major tech companies. The stock price for each company has been normalized to equal 100 in June 2012. This figure is labeled as “bad” because it takes considerable mental energy to match the company names in the legend to the data curves." width="576" />
+<img src="redundant_coding_files/figure-html/tech-stocks-bad-legend-1.png" alt="Stock price over time for four major tech companies. The stock price for each company has been normalized to equal 100 in June 2012. This figure is labeled as “bad” because it takes considerable mental energy to match the company names in the legend to the data curves. Data source: Yahoo Finance" width="576" />
 <p class="caption">
-Figure 20.5: Stock price over time for four major tech companies. The stock price for each company has been normalized to equal 100 in June 2012. This figure is labeled as “bad” because it takes considerable mental energy to match the company names in the legend to the data curves.
+Figure 20.5: Stock price over time for four major tech companies. The stock price for each company has been normalized to equal 100 in June 2012. This figure is labeled as “bad” because it takes considerable mental energy to match the company names in the legend to the data curves. Data source: Yahoo Finance
 </p>
 </div>
 <p>The figure contains four lines representing the stock prices of the four different companies. The lines are color coded using a colorblind-friendly color scale. So it should be relatively straightfoward to associate each line with the corresponding company. Yet it is not. The problem here is that the data lines have a clear visual order. The yellow line, representing Facebook, is clearly the highest line, and the black line, representing Apple, is clearly the lowest, with Alphabet and Microsoft in between, in that order. Yet the order of the four companies in the legend is Alphabet, Apple, Facebook, Microsoft (alphabetic order). Thus, the perceived order of the data lines differs from the order of the companies in the legend, and it takes a surprising amount of mental effort to match data lines with company names.</p>
 <p>This problem arises commonly with plotting software that autogenerates legends. The plotting software has no concept of the visual order the viewer will perceive. Instead, the software sorts the legend by some other order, most commonly alphabetical. We can fix this problem by manually reordering the entries in the legend so they match the preceived ordering in the data (Figure <a href="redundant-coding.html#fig:tech-stocks-good-legend">20.6</a>). The result is a figure that makes it much easier to match the legend to the data.</p>
 
 <div class="figure" style="text-align: center"><span id="fig:tech-stocks-good-legend"></span>
-<img src="redundant_coding_files/figure-html/tech-stocks-good-legend-1.png" alt="Stock price over time for four major tech companies. The stock price for each company has been normalized to equal 100 in June 2012." width="576" />
+<img src="redundant_coding_files/figure-html/tech-stocks-good-legend-1.png" alt="Stock price over time for four major tech companies. The stock price for each company has been normalized to equal 100 in June 2012. Data source: Yahoo Finance" width="576" />
 <p class="caption">
-Figure 20.6: Stock price over time for four major tech companies. The stock price for each company has been normalized to equal 100 in June 2012.
+Figure 20.6: Stock price over time for four major tech companies. The stock price for each company has been normalized to equal 100 in June 2012. Data source: Yahoo Finance
 </p>
 </div>
 <div class="rmdtip">
@@ -313,7 +313,7 @@ If there is a clear visual ordering in your data, make sure to match it in the l
 <p>Matching the legend order to the data order is always helpful, but the benefits are particularly obvious under color-vision deficiency simulation (Figure <a href="redundant-coding.html#fig:tech-stocks-good-legend-cvd">20.7</a>). For example, it helps in the tritanomaly version of the figure, where the blue and the green become difficult to distinguish (Figure <a href="redundant-coding.html#fig:tech-stocks-good-legend-cvd">20.7</a>, bottom left). It also helps in the grayscale version (Figure <a href="redundant-coding.html#fig:tech-stocks-good-legend-cvd">20.7</a>, bottom right). Even though the two colors for Facebook and Alphabet have virtually the same gray value, we can see that Microsoft and Apple are represented by darker colors and take the bottom two spots. Therefore, we correctly assume that the highest line corresponds to Facebook and the second-highest line to Alphabet.</p>
 
 <div class="figure" style="text-align: center"><span id="fig:tech-stocks-good-legend-cvd"></span>
-<img src="redundant_coding_files/figure-html/tech-stocks-good-legend-cvd-1.png" alt="Color-vision-deficiency simulation of Figure 20.6." width="816" />
+<img src="redundant_coding_files/figure-html/tech-stocks-good-legend-cvd-1.png" alt="Color-vision-deficiency simulation of Figure 20.6." width="754.285714285714" />
 <p class="caption">
 Figure 20.7: Color-vision-deficiency simulation of Figure <a href="redundant-coding.html#fig:tech-stocks-good-legend">20.6</a>.
 </p>
@@ -325,9 +325,9 @@ Figure 20.7: Color-vision-deficiency simulation of Figure <a href="redundant-cod
 <p>The general strategy we can employ is called <em>direct labeling</em>, whereby we place appropriate text labels or other visual elements that serve as guideposts to the rest of the figure. We have previously encountered direct labeling in Chapter <a href="color-pitfalls.html#color-pitfalls">19</a> (Figure <a href="color-pitfalls.html#fig:popgrowth-vs-popsize-bw">19.2</a>), as an alternative to drawing a legend with over 50 distinct colors. To apply the direct labeling concept to the stock-price figure, we place the name of each company right next to the end of its respective data line (Figure <a href="redundant-coding.html#fig:tech-stocks-good-no-legend">20.8</a>).</p>
 
 <div class="figure" style="text-align: center"><span id="fig:tech-stocks-good-no-legend"></span>
-<img src="redundant_coding_files/figure-html/tech-stocks-good-no-legend-1.png" alt="Stock price over time for four major tech companies. The stock price for each company has been normalized to equal 100 in June 2012." width="576" />
+<img src="redundant_coding_files/figure-html/tech-stocks-good-no-legend-1.png" alt="Stock price over time for four major tech companies. The stock price for each company has been normalized to equal 100 in June 2012. Data source: Yahoo Finance" width="576" />
 <p class="caption">
-Figure 20.8: Stock price over time for four major tech companies. The stock price for each company has been normalized to equal 100 in June 2012.
+Figure 20.8: Stock price over time for four major tech companies. The stock price for each company has been normalized to equal 100 in June 2012. Data source: Yahoo Finance
 </p>
 </div>
 <div class="rmdtip">
@@ -354,7 +354,7 @@ Figure 20.10: Density estimates of the sepal lengths of three different iris spe
 <p>We can also use density plots such as the one in Figure <a href="redundant-coding.html#fig:iris-densities-direct-label">20.10</a> as a legend replacement, by placing the density plots into the margins of a scatter plot (Figure <a href="redundant-coding.html#fig:iris-scatter-dens">20.11</a>). This allows us to direct-label the marginal density plots rather than the central scatter plot and hence results in a figure that is somewhat less cluttered than Figure <a href="redundant-coding.html#fig:iris-scatter-with-ellipses">20.9</a> with directly-labeled ellipses.</p>
 
 <div class="figure" style="text-align: center"><span id="fig:iris-scatter-dens"></span>
-<img src="redundant_coding_files/figure-html/iris-scatter-dens-1.png" alt="Sepal width versus sepal length for three different iris species, with marginal density estimates of each variable for each species." width="576" />
+<img src="redundant_coding_files/figure-html/iris-scatter-dens-1.png" alt="Sepal width versus sepal length for three different iris species, with marginal density estimates of each variable for each species." width="685.714285714286" />
 <p class="caption">
 Figure 20.11: Sepal width versus sepal length for three different iris species, with marginal density estimates of each variable for each species.
 </p>

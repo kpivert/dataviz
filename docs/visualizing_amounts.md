@@ -26,7 +26,7 @@ This kind of data is commonly visualized with vertical bars. For each movie, we 
 (ref:boxoffice-vertical) Highest grossing movies for the weekend of December 22-24, 2017, displayed as a bar plot. Data source: Box Office Mojo (http://www.boxofficemojo.com/). Used with permission
 
 <div class="figure" style="text-align: center">
-<img src="visualizing_amounts_files/figure-html/boxoffice-vertical-1.png" alt="(ref:boxoffice-vertical)" width="672" />
+<img src="visualizing_amounts_files/figure-html/boxoffice-vertical-1.png" alt="(ref:boxoffice-vertical)" width="685.714285714286" />
 <p class="caption">(\#fig:boxoffice-vertical)(ref:boxoffice-vertical)</p>
 </div>
 
@@ -83,10 +83,10 @@ We should only rearrange bars, however, when there is no natural ordering to the
 
 All examples from the previous subsection showed how a quantitative amount varied with respect to one categorical variable. Frequently, however, we are interested in two categorical variables at the same time. For example, the U.S. Census Bureau provides median income levels broken down by both age and race. We can visualize this dataset with a *grouped bar plot* (Figure \@ref(fig:income-by-age-race-dodged)). In a grouped bar plot, we draw a group of bars at each position along the *x* axis, determined by one categorical variable, and then we draw bars within each group according to the other categorical variable.
 
-(ref:income-by-age-race-dodged) 2016 median U.S. annual household income versus age group and race. Age groups are shown along the *x* axis, and for each age group there are four bars, corresponding to the median income of asian, white, hispanic, and black people, respectively. Data source: United States Census Bureau
+(ref:income-by-age-race-dodged) 2016 median U.S. annual household income versus age group and race. Age groups are shown along the *x* axis, and for each age group there are four bars, corresponding to the median income of Asian, white, Hispanic, and black people, respectively. Data source: United States Census Bureau
 
 <div class="figure" style="text-align: center">
-<img src="visualizing_amounts_files/figure-html/income-by-age-race-dodged-1.png" alt="(ref:income-by-age-race-dodged)" width="768" />
+<img src="visualizing_amounts_files/figure-html/income-by-age-race-dodged-1.png" alt="(ref:income-by-age-race-dodged)" width="754.285714285714" />
 <p class="caption">(\#fig:income-by-age-race-dodged)(ref:income-by-age-race-dodged)</p>
 </div>
 
@@ -95,7 +95,7 @@ Grouped bar plots show a lot of information at once and they can be confusing. I
 (ref:income-by-race-age-dodged) 2016 median U.S. annual household income versus age group and race. In contrast to Figure \@ref(fig:income-by-age-race-dodged), now race is shown along the *x* axis, and for each race we show seven bars according to the seven age groups. Data source: United States Census Bureau
 
 <div class="figure" style="text-align: center">
-<img src="visualizing_amounts_files/figure-html/income-by-race-age-dodged-1.png" alt="(ref:income-by-race-age-dodged) " width="768" />
+<img src="visualizing_amounts_files/figure-html/income-by-race-age-dodged-1.png" alt="(ref:income-by-race-age-dodged) " width="754.285714285714" />
 <p class="caption">(\#fig:income-by-race-age-dodged)(ref:income-by-race-age-dodged) </p>
 </div>
 
@@ -104,7 +104,7 @@ Both Figures \@ref(fig:income-by-age-race-dodged) and \@ref(fig:income-by-race-a
 (ref:income-by-age-race-faceted) 2016 median U.S. annual household income versus age group and race. Instead of displaying this data as a grouped bar plot, as in Figures \@ref(fig:income-by-age-race-dodged) and \@ref(fig:income-by-race-age-dodged), we now show the data as four separate regular bar plots. This choice has the advantage that we don't need to encode either categorical variable by bar color. Data source: United States Census Bureau
 
 <div class="figure" style="text-align: center">
-<img src="visualizing_amounts_files/figure-html/income-by-age-race-faceted-1.png" alt="(ref:income-by-age-race-faceted)" width="816" />
+<img src="visualizing_amounts_files/figure-html/income-by-age-race-faceted-1.png" alt="(ref:income-by-age-race-faceted)" width="754.285714285714" />
 <p class="caption">(\#fig:income-by-age-race-faceted)(ref:income-by-age-race-faceted)</p>
 </div>
 
@@ -158,7 +158,7 @@ As an alternative to mapping data values onto positions via bars or dots, we can
 (ref:internet-over-time) Internet adoption over time, for select countries. Color represents the percent of internet users for the respective country and year. Countries were ordered by percent internet users in 2016. Data source: World Bank
 
 <div class="figure" style="text-align: center">
-<img src="visualizing_amounts_files/figure-html/internet-over-time-1.png" alt="(ref:internet-over-time)" width="816" />
+<img src="visualizing_amounts_files/figure-html/internet-over-time-1.png" alt="(ref:internet-over-time)" width="754.285714285714" />
 <p class="caption">(\#fig:internet-over-time)(ref:internet-over-time)</p>
 </div>
 
@@ -168,7 +168,7 @@ As is the case with all other visualization approaches discussed in this chapter
 
 
 <div class="figure" style="text-align: center">
-<img src="visualizing_amounts_files/figure-html/internet-over-time2-1.png" alt="(ref:internet-over-time2)" width="816" />
+<img src="visualizing_amounts_files/figure-html/internet-over-time2-1.png" alt="(ref:internet-over-time2)" width="754.285714285714" />
 <p class="caption">(\#fig:internet-over-time2)(ref:internet-over-time2)</p>
 </div>
 

@@ -8,7 +8,7 @@ library(tidyr)
 
 # Visualizing associations among two or more quantitative variables {#visualizing-associations}
 
-Many datasets contain two or more quantitative variables, and we may be interested in how these variables relate to each other. For example, we may have a dataset of quantiative measurements of different animals, such as the animals' height, weight, length, and daily energy demands. To plot the relationship of just two such variables, e.g. the height and weight, we will normally use a scatter plot. If we want to show more than two variables at once, we may opt for a bubble chart, a scatter plot matrix, or a correlogram. Finally, for very high-dimensional datasets, it may be useful to perform dimension reduction, for example in the form of principal components analysis.
+Many datasets contain two or more quantitative variables, and we may be interested in how these variables relate to each other. For example, we may have a dataset of quantitative measurements of different animals, such as the animals' height, weight, length, and daily energy demands. To plot the relationship of just two such variables, e.g. the height and weight, we will normally use a scatter plot. If we want to show more than two variables at once, we may opt for a bubble chart, a scatter plot matrix, or a correlogram. Finally, for very high-dimensional datasets, it may be useful to perform dimension reduction, for example in the form of principal components analysis.
 
 ## Scatter plots {#associations-scatterplots}
 
@@ -65,12 +65,12 @@ Because the head length is defined as the distance from the tip of the bill to t
 (ref:blue-jays-scatter-bubbles) Head length versus body mass for 123 blue jays. The birds' sex is indicated by color, and the birds' skull size by symbol size. Head-length measurements include the length of the bill while skull-size measurements do not. Head length and skull size tend to be correlated, but there are some birds with unusually long or short bills given their skull size. Data source: Keith Tarvin, Oberlin College
 
 
-```{r blue-jays-scatter-bubbles, fig.width = 5, fig.asp = 5/4, fig.cap='(ref:blue-jays-scatter-bubbles)'}
+```{r blue-jays-scatter-bubbles, fig.width = 5.5*6/4.2, fig.asp = 3.2/8, fig.cap='(ref:blue-jays-scatter-bubbles)'}
 blue_jays$sex <- ifelse(blue_jays$KnownSex == "F", "female birds", "male birds")
-blue_jays$sex <- factor(blue_jays$sex, levels = c("male birds", "female birds"))
+blue_jays$sex <- factor(blue_jays$sex, levels = c("female birds", "male birds"))
 ggplot(blue_jays, aes(Mass, Head, size = Skull, fill = KnownSex)) + 
   geom_point(pch = 21, color = "white") +
-  facet_wrap(~sex, ncol = 1, scales = "fixed") +
+  facet_wrap(~sex, ncol = 2, scales = "fixed") +
   scale_x_continuous(name = "body mass (g)") +
   scale_y_continuous(name = "head length (mm)", breaks = c(52, 54, 56, 58, 60)) +
   scale_fill_manual(values = c(F = "#D55E00", M = "#0072B2"), guide = "none") +
@@ -88,19 +88,24 @@ ggplot(blue_jays, aes(Mass, Head, size = Skull, fill = KnownSex)) +
       override.aes = list(fill = "gray40")
     )
   ) +
-  theme_dviz_grid() +
+  theme_dviz_grid(12) +
   theme(
-    legend.position = c(1, 0.53),
+    legend.position = c(1, 0.03),
     legend.justification = c(1, 0),
     legend.spacing.x = unit(2, "pt"),
     legend.spacing.y = unit(2, "pt"),
     legend.background = element_rect(fill = "white", color = NA),
     legend.key.width = unit(10, "pt"),
-    strip.text = element_text(size = 14, family = "Myriad Pro Semibold")
+    #strip.text = element_text(size = 14, family = "Myriad Pro Semibold")
+    strip.text = element_text(size = 12, margin = margin(2, 0, 2, 0)),
+    strip.background  = element_rect(
+      fill = "grey85", colour = "grey85",
+      linetype = 1, size = 0.25
+    )
   )
 ```
 
-Bubble charts have the disadvantage that they show the same types of variables, quantitative variables, with two different types of scales, position and size. This makes it difficult to visually ascertain the strengths of associations between the various variables. Humans are much better at judging the position of objects than their size. And in particular, small size differences are virtually impossible to see. In 
+Bubble charts have the disadvantage that they show the same types of variables, quantitative variables, with two different types of scales, position and size. This makes it difficult to visually ascertain the strengths of associations between the various variables. Moreover, differences between data values encoded as bubble size are harder to perceive than differences between data values encoded as position. Because even the largest bubbles need to be somewhat small compared to the total figure size, the size differences between even the largest and the smallest bubbles are necessarily small. Consequently, smaller differences in data values will correspond to very small size differences that can be virtually impossible to see. In 
 Figure \@ref(fig:blue-jays-scatter-bubbles), I used a size mapping that visually amplified the difference between the smallest skulls (around 28mm) and the largest skulls (around 34mm), and yet it is difficult to determine what the relationship is between skull size and either body mass or head length.
 
 As an alternative to a bubble chart, it may be preferable to show an all-against-all matrix of scatter plots, where each individual plot shows two data dimensions (Figure \@ref(fig:blue-jays-scatter-all)). This figure shows clearly that the relationship between skull size and body mass is comparable for female and male birds except that the female birds tend to be somewhat smaller. However, the same is not true for the relationship between head length and body mass. There is a clear separation by sex. Male birds tend to have longer bills than female birds, all else equal.
@@ -109,7 +114,7 @@ As an alternative to a bubble chart, it may be preferable to show an all-against
 (ref:blue-jays-scatter-all) All-against-all scatter plot matrix of head length, body mass, and skull size, for 123 blue jays. This figure shows the exact same data as Figure \@ref(fig:blue-jays-scatter-sex). However, because we are better at judging position than symbol size, correlations between skull size and the other two variables are easier to perceive in the pairwise scatter plots than in Figure \@ref(fig:blue-jays-scatter-sex). Data source: Keith Tarvin, Oberlin College
 
 
-```{r blue-jays-scatter-all, fig.asp = 3/4, fig.cap='(ref:blue-jays-scatter-all)'}
+```{r blue-jays-scatter-all, fig.width = 5*6/4.2, fig.asp = 3/4, fig.cap='(ref:blue-jays-scatter-all)'}
 blue_jays %>% select(BirdID, KnownSex, Head, Mass, Skull) %>%
   gather(var_x, val_x, Head:Skull) %>%
   left_join(select(blue_jays, BirdID, Head, Mass, Skull)) %>%
@@ -123,10 +128,14 @@ labels <- c(
 
 ggplot(bj_matrix, aes(val_x, val_y, fill = KnownSex)) + 
   geom_point(pch = 21, color = "white", size = 2, stroke = 0.2) +
-  scale_x_continuous(expand = expand_scale(mult = 0.1),
-                     breaks = scales::pretty_breaks(4, min.n = 3)) +
-  scale_y_continuous(expand = expand_scale(mult = 0.1),
-                     breaks = scales::pretty_breaks(4, min.n = 3)) +
+  scale_x_continuous(
+    expand = expand_scale(mult = 0.1),
+    breaks = scales::pretty_breaks(4, min.n = 3)
+  ) +
+  scale_y_continuous(
+    expand = expand_scale(mult = 0.1),
+    breaks = scales::pretty_breaks(4, min.n = 3)
+  ) +
   scale_fill_manual(
     values = c(F = "#D55E00D0", M = "#0072B2D0"),
     breaks = c("F", "M"),
@@ -148,12 +157,12 @@ ggplot(bj_matrix, aes(val_x, val_y, fill = KnownSex)) +
     )
   ) +
   coord_cartesian(clip = "off") +
-  theme_dviz_grid() +
-  panel_border(colour = "grey90", size = 0.5) +
+  theme_dviz_grid(line_size = 0.3) +
+  panel_border(colour = "grey85", size = 0.4) +
   theme(
     strip.placement = "outside",
     strip.text.x = element_text(vjust = 1, margin = margin(0, 0, 0, 0)),
-    strip.text.y = element_text(vjust = 0, angle = -90),
+    strip.text.y = element_text(vjust = 0, angle = -90, margin = margin(0, 3.5, 0, 0)),
     legend.box.spacing = grid::unit(0, "pt"),
     legend.text = element_text(vjust = 0.6),
     legend.position = "top",
@@ -167,15 +176,16 @@ ggplot(bj_matrix, aes(val_x, val_y, fill = KnownSex)) +
 
 ## Correlograms {#associations-correlograms}
 
-When we have more than three to four quantiative variables, all-against-all scatter plot matrices quickly become unwieldy. In this case, it is more useful to quantify the amount of association between pairs of variables and visualize this quantity rather than the raw data. One common way to do this is to calculate *correlation coefficients*. The correlation coefficient *r* is a number between -1 and 1 that measures to what extent two variables covary. A value of *r* = 0 means there is no association whatsoever, and a value of either 1 or -1 indicates a perfect association. The sign of the correlation coefficient indicates whether the variables are *correlated* (larger values in one variable coincide with larger values in the other) or *anticorrelated* (larger values in one variable coincide with smaller values in the other). To provide visual examples of what different correlation strengths look like, in Figure \@ref(fig:correlations) I show randomly generated sets of points that differ widely in the degree to which the *x* and *y* values are correlated.
+When we have more than three to four quantitative variables, all-against-all scatter plot matrices quickly become unwieldy. In this case, it is more useful to quantify the amount of association between pairs of variables and visualize this quantity rather than the raw data. One common way to do this is to calculate *correlation coefficients*. The correlation coefficient *r* is a number between -1 and 1 that measures to what extent two variables covary. A value of *r* = 0 means there is no association whatsoever, and a value of either 1 or -1 indicates a perfect association. The sign of the correlation coefficient indicates whether the variables are *correlated* (larger values in one variable coincide with larger values in the other) or *anticorrelated* (larger values in one variable coincide with smaller values in the other). To provide visual examples of what different correlation strengths look like, in Figure \@ref(fig:correlations) I show randomly generated sets of points that differ widely in the degree to which the *x* and *y* values are correlated.
 
 (ref:correlations) Examples of correlations of different magnitude and direction, with associated correlation coefficient *r*. In both rows, from left to right correlations go from weak to strong. In the top row the correlations are positive (larger values for one quantity are associated with larger values for the other) and in the bottom row they are negative (larger values for one quantity are associated with smaller values for the other). In all six panels, the sets of *x* and *y* values are identical, but the pairings between individual *x* and *y* values have been reshuffled to generate the specified correlation coefficients.
 
-```{r correlations, fig.asp = 283/434, fig.cap = '(ref:correlations)'}
+```{r correlations, fig.width = 5*6/4.2, fig.asp = 283/434, fig.cap = '(ref:correlations)'}
 r <- c(.2, .6, .9, -.2, -.6, -.9)
 labels_df <- tibble(
   r = factor(r, levels = r),
-  label = paste0("r = ", r),
+  #label = paste0("r = ", r),
+  label = c("r = 0.2", "r = 0.6", "r = 0.9", "r = –0.2", "r = –0.6", "r = –0.9"),
   x = c(-2.3, -2.3, -2.3, 2.3, 2.3, 2.3),
   hjust = c(0, 0, 0, 1, 1, 1),
   y = 2.3
@@ -188,7 +198,7 @@ ggplot(correlation_examples, aes(x, y)) +
     aes(label = label, hjust = hjust),
     vjust = 1,
     family = "Myriad Pro",
-    size = 12/.pt
+    size = 14/.pt
   ) +
   facet_wrap(~r) +
   coord_fixed(xlim = c(-2.5, 2.5), ylim = c(-2.5, 2.5), expand = FALSE, clip = "off") +
@@ -229,7 +239,9 @@ ggplot(filter(df_long, as.integer(var1) < as.integer(var2)),
   scale_y_discrete(name = NULL, expand = c(0, 0)) +
   scale_fill_continuous_divergingx(
     palette = "Earth", rev = FALSE,
-    limits = c(-.5, .5), breaks = c(-.5, 0, .5),
+    limits = c(-.5, .5),
+    breaks = c(-.5, 0, .5),
+    labels = c("–0.5", "0.0", "0.5"),
     name = "correlation",
     guide = guide_colorbar(
       direction = "horizontal",
@@ -242,12 +254,14 @@ ggplot(filter(df_long, as.integer(var1) < as.integer(var2)),
   ) +
   coord_fixed() +
   theme_dviz_open(rel_small = 1) +
-  theme(axis.line = element_blank(),
-        axis.ticks = element_blank(),
-        axis.ticks.length = grid::unit(3, "pt"),
-        legend.position = c(.97, .0),
-        legend.justification = c(1, 0),
-        legend.title.align = 0.5)
+  theme(
+    axis.line = element_blank(),
+    axis.ticks = element_blank(),
+    axis.ticks.length = grid::unit(3, "pt"),
+    legend.position = c(.97, .0),
+    legend.justification = c(1, 0),
+    legend.title.align = 0.5
+  )
 
 ```
 
@@ -264,7 +278,9 @@ ggplot(filter(df_long, as.integer(var1) < as.integer(var2)),
   scale_size_area(max_size = 19, limits = c(0, 0.5), guide = "none") +
   scale_fill_continuous_divergingx(
     palette = "Earth", rev = FALSE,
-    limits = c(-.5, .5), breaks = c(-.5, 0, .5),
+    limits = c(-.5, .5),
+    breaks = c(-.5, 0, .5),
+    labels = c("–0.5", "0.0", "0.5"),
     name = "correlation",
     guide = guide_colorbar(
       direction = "horizontal",
@@ -277,12 +293,14 @@ ggplot(filter(df_long, as.integer(var1) < as.integer(var2)),
   ) +
   coord_fixed() +
   theme_dviz_open(rel_small = 1) +
-  theme(axis.line = element_blank(),
-        axis.ticks = element_blank(),
-        axis.ticks.length = grid::unit(3, "pt"),
-        legend.position = c(.97, .0),
-        legend.justification = c(1, 0),
-        legend.title.align = 0.5)
+  theme(
+    axis.line = element_blank(),
+    axis.ticks = element_blank(),
+    axis.ticks.length = grid::unit(3, "pt"),
+    legend.position = c(.97, .0),
+    legend.justification = c(1, 0),
+    legend.title.align = 0.5
+  )
 
 ```
 
@@ -296,7 +314,7 @@ There are many techniques for dimension reduction. I will discuss only one techn
 
 (ref:blue-jays-PCA) Example principal components (PC) analysis in two dimensions. (a) The original data. As example data, I am using the head-length and skull-size measurements from the blue jays dataset. Female and male birds are distinguished by color, but this distinction has no effect on the PC analysis. (b) As the first step in PCA, we scale the original data values to zero mean and unit variance. We then we define new variables (the principal components, PCs) along the directions of maximum variation in the data. (c) Finally, we project the data into the new coordinates. Mathematically, this projection is equivalent to a rotation of the data points around the origin. In the 2D example shown here, the data points are rotated clockwise by 45 degrees. 
 
-```{r blue-jays-PCA, fig.width = 8.5, fig.asp = 0.35, fig.cap = '(ref:blue-jays-PCA)'}
+```{r blue-jays-PCA, fig.width = 5.5*6/4.2, fig.asp = 0.35, fig.cap = '(ref:blue-jays-PCA)'}
 p1 <- ggplot(blue_jays, aes(Skull, Head, fill = KnownSex)) + 
   geom_point(pch = 21, color = "white", size = 2, stroke = 0.2) +
   scale_x_continuous(
@@ -526,9 +544,9 @@ Next, we project the original data into the principal components space (Figure \
 (ref:forensic-PCA) Composition of individual glass fragments visualized in the principal components space defined in Figure \@ref(fig:forensic-PCA-rotation). We see that the different types of glass samples cluster at characteristic values of PC 1 and 2. In particular, headlamps are characterized by a negative PC 1 value whereas windows tend to have a positive PC 1 value. Tableware and containers have PC 1 values close to zero and tend to have positive PC 2 values. However, there are a few exceptions where container fragments have both a negative PC 1 value and a negative PC 2 value. These are fragments whose composition drastically differs from all other fragments analyzed.
 
 
-```{r forensic-PCA, fig.cap = '(ref:forensic-PCA)'}
+```{r forensic-PCA, fig.width = 5*6/4.2, fig.cap = '(ref:forensic-PCA)'}
 ggplot(pca_data, aes(x = PC1, y = PC2, color = type, fill = type, shape = type)) + 
-  geom_point() +
+  geom_point(size = 2) +
   scale_color_manual(values = colors, name = "fragment type") +
   scale_fill_manual(values = fills, name = "fragment type") +
   scale_shape_manual(values = c(22:24, 21), name = "fragment type") +
@@ -539,9 +557,9 @@ ggplot(pca_data, aes(x = PC1, y = PC2, color = type, fill = type, shape = type))
 
 ## Paired data {#associations-paired-data}
 
-A special case of multivariate quantitative data is paired data: Data where there are two or more measurements of the same quantity under slightly different conditions. Examples include two comparable measurements on each subject (e.g., the length of the right and the left arm of a person), repeat measurements on the same subject at different time points (e.g., a person's weight at two different times during the year), or measurements on two closely related subjects (e.g., the heights of two identical twins). For paired data, our null hypothesis is that each pair of measurements is identical or nearly so, whereas there is substantial variation between pairs. Two twins will be approximately of the same height but will differ in height from other twins. Therefore, we need to choose visualizations that highlight deviations from this null hypothesis.
+A special case of multivariate quantitative data is paired data: Data where there are two or more measurements of the same quantity under slightly different conditions. Examples include two comparable measurements on each subject (e.g., the length of the right and the left arm of a person), repeat measurements on the same subject at different time points (e.g., a person's weight at two different times during the year), or measurements on two closely related subjects (e.g., the heights of two identical twins). For paired data, it is reasonable to assume that the two measurements belonging to a pair are more similar to each other than to the measurements belonging to other pairs. Two twins will be approximately of the same height but will differ in height from other twins. Therefore, for paired data, we need to choose visualizations that highlight any differences between the paired measurements.
 
-An excellent choice for paired data is a simple scatter plot on top of a diagonal line marking *x* = *y*. If our null hypothesis is true, all points in the sample will be scattered symmetrically around this line. A systematic deviation from the null hypothesis, by contrast, will be visible in a systematic shift of the data points up or down relative to the diagonal. As an example, consider the carbon dioxide (CO<sub>2</sub>) emissions per person, measured for 166 countries both in 1970 and in 2010 (Figure \@ref(fig:CO2-paired-scatter)). This example highlights two common features of paired data. First, most points are relatively close to the diagonal line. Even though CO<sub>2</sub> emissions vary over nearly four orders of magnitude among countries, they are fairly consistent within each country over a 40-year time span. Second, the points are systematically shifted upwards relative to the diagonal line. The majority of countries has seen an increase in CO<sub>2</sub> emissions over the 40 years considered.
+An excellent choice in this case is a simple scatter plot on top of a diagonal line marking *x* = *y*. In such a plot, if the only difference between the two measurements of each pair is random noise, then all points in the sample will be scattered symmetrically around this line. Any systematic differences between the paired measurements, by contrast, will be visible in a systematic shift of the data points up or down relative to the diagonal. As an example, consider the carbon dioxide (CO<sub>2</sub>) emissions per person, measured for 166 countries both in 1970 and in 2010 (Figure \@ref(fig:CO2-paired-scatter)). This example highlights two common features of paired data. First, most points are relatively close to the diagonal line. Even though CO<sub>2</sub> emissions vary over nearly four orders of magnitude among countries, they are fairly consistent within each country over a 40-year time span. Second, the points are systematically shifted upwards relative to the diagonal line. The majority of countries has seen an increase in CO<sub>2</sub> emissions over the 40 years considered.
 
 (ref:CO2-paired-scatter) Carbon dioxide (CO<sub>2</sub>) emissions per person in 1970 and 2010, for 166 countries. Each dot represents one country. The diagonal line represents identical CO<sub>2</sub> emissions in 1970 and 2010. The points are systematically shifted upwards relative to the diagonal line: In the majority of countries, emissions were higher in 2010 than in 1970. Data source: Carbon Dioxide Information Analysis Center
 

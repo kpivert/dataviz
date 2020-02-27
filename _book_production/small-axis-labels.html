@@ -198,7 +198,7 @@
 <li class="chapter" data-level="23.3" data-path="balance-data-context.html"><a href="balance-data-context.html#paired-data"><i class="fa fa-check"></i><b>23.3</b> Paired data</a></li>
 <li class="chapter" data-level="23.4" data-path="balance-data-context.html"><a href="balance-data-context.html#summary"><i class="fa fa-check"></i><b>23.4</b> Summary</a></li>
 </ul></li>
-<li class="chapter" data-level="24" data-path="small-axis-labels.html"><a href="small-axis-labels.html"><i class="fa fa-check"></i><b>24</b> Your axis labels are too small</a></li>
+<li class="chapter" data-level="24" data-path="small-axis-labels.html"><a href="small-axis-labels.html"><i class="fa fa-check"></i><b>24</b> Use larger axis labels</a></li>
 <li class="chapter" data-level="25" data-path="avoid-line-drawings.html"><a href="avoid-line-drawings.html"><i class="fa fa-check"></i><b>25</b> Avoid line drawings</a></li>
 <li class="chapter" data-level="26" data-path="no-3d.html"><a href="no-3d.html"><i class="fa fa-check"></i><b>26</b> Don’t go 3D</a><ul>
 <li class="chapter" data-level="26.1" data-path="no-3d.html"><a href="no-3d.html#avoid-gratuitous-3d"><i class="fa fa-check"></i><b>26.1</b> Avoid gratuitous 3D</a></li>
@@ -253,12 +253,12 @@
 
             <section class="normal" id="section-">
 <div id="small-axis-labels" class="section level1">
-<h1><span class="header-section-number">24</span> Your axis labels are too small</h1>
+<h1><span class="header-section-number">24</span> Use larger axis labels</h1>
 <p>If you take away only one single lesson from this book, make it this one: Pay attention to your axis labels, axis tick labels, and other assorted plot annotations. Chances are they are too small. In my experience, nearly all plot libraries and graphing softwares have poor defaults. If you use the default values, you’re almost certainly making a poor choice.</p>
 <p>For example, consider Figure <a href="small-axis-labels.html#fig:Aus-athletes-small">24.1</a>. I see figures like this all the time. The axis labels, axis tick labels, and legend labels are all incredibly small. We can barely see them, and we may have to zoom into the page to read the annotations in the legend.</p>
 
 <div class="figure" style="text-align: center"><span id="fig:Aus-athletes-small"></span>
-<img src="small_axis_labels_files/figure-html/Aus-athletes-small-1.png" alt="Percent body fat versus height in professional male Australian athletes. (Each point represents one athlete.) This figure suffers from the common affliction that the text elements are way too small and are barely legible. Data source: Telford and Cunningham (1991)" width="1260" />
+<img src="small_axis_labels_files/figure-html/Aus-athletes-small-1.png" alt="Percent body fat versus height in professional male Australian athletes. (Each point represents one athlete.) This figure suffers from the common affliction that the text elements are way too small and are barely legible. Data source: Telford and Cunningham (1991)" width="630" />
 <p class="caption">
 Figure 24.1: Percent body fat versus height in professional male Australian athletes. (Each point represents one athlete.) This figure suffers from the common affliction that the text elements are way too small and are barely legible. Data source: <span class="citation">Telford and Cunningham (<a href="#ref-Telford-Cunningham-1991">1991</a>)</span>
 </p>
@@ -266,7 +266,7 @@ Figure 24.1: Percent body fat versus height in professional male Australian athl
 <p>A somewhat better version of this figure is shown as Figure <a href="small-axis-labels.html#fig:Aus-athletes-ugly">24.2</a>. I think the fonts are still too small, and that’s why I have labeled the figure as ugly. However, we are moving in the right direction. This figure might be passable under some circumstances. My main criticism here is not so much that the labels aren’t legible as that the figure is not balanced; the text elements are too small compared to the rest of the figure.</p>
 
 <div class="figure" style="text-align: center"><span id="fig:Aus-athletes-ugly"></span>
-<img src="small_axis_labels_files/figure-html/Aus-athletes-ugly-1.png" alt="Percent body fat versus height in male athletes. This figure is an improvement over Figure 24.1, but the text elements remain too small and the figure is not balanced. Data source: Telford and Cunningham (1991)" width="1260" />
+<img src="small_axis_labels_files/figure-html/Aus-athletes-ugly-1.png" alt="Percent body fat versus height in male athletes. This figure is an improvement over Figure 24.1, but the text elements remain too small and the figure is not balanced. Data source: Telford and Cunningham (1991)" width="630" />
 <p class="caption">
 Figure 24.2: Percent body fat versus height in male athletes. This figure is an improvement over Figure <a href="small-axis-labels.html#fig:Aus-athletes-small">24.1</a>, but the text elements remain too small and the figure is not balanced. Data source: <span class="citation">Telford and Cunningham (<a href="#ref-Telford-Cunningham-1991">1991</a>)</span>
 </p>
@@ -274,7 +274,7 @@ Figure 24.2: Percent body fat versus height in male athletes. This figure is an 
 <p>The next figure uses the default settings I’m applying throughout this book. I think it is well balanced, the text is clearly visible, and it fits with the overall size of the figure.</p>
 
 <div class="figure" style="text-align: center"><span id="fig:Aus-athletes-good"></span>
-<img src="small_axis_labels_files/figure-html/Aus-athletes-good-1.png" alt="Percent body fat versus height in male athletes. All figure elements are appropriately scaled. Data source: Telford and Cunningham (1991)" width="1260" />
+<img src="small_axis_labels_files/figure-html/Aus-athletes-good-1.png" alt="Percent body fat versus height in male athletes. All figure elements are appropriately scaled. Data source: Telford and Cunningham (1991)" width="630" />
 <p class="caption">
 Figure 24.3: Percent body fat versus height in male athletes. All figure elements are appropriately scaled. Data source: <span class="citation">Telford and Cunningham (<a href="#ref-Telford-Cunningham-1991">1991</a>)</span>
 </p>
@@ -282,14 +282,14 @@ Figure 24.3: Percent body fat versus height in male athletes. All figure element
 <p>Importantly, we can overdo it and make the labels too big (Figure <a href="small-axis-labels.html#fig:Aus-athletes-big-ugly">24.4</a>). Sometimes we need big labels, for example if the figure is meant to be reduced in size, but the various elements of the figure (in particular, label text and plot symbols) need to fit together. In Figure <a href="small-axis-labels.html#fig:Aus-athletes-big-ugly">24.4</a>, the points used to visualize the data are too small relative to the text. Once we fix this issue, the figure becomes acceptable again (Figure <a href="small-axis-labels.html#fig:Aus-athletes-big-good">24.5</a>).</p>
 
 <div class="figure" style="text-align: center"><span id="fig:Aus-athletes-big-ugly"></span>
-<img src="small_axis_labels_files/figure-html/Aus-athletes-big-ugly-1.png" alt="Percent body fat versus height in male athletes. The text elements are fairly large, and their size may be appropriate if the figure is meant to be reproduced at a very small scale. However, the figure overall is not balanced; the points are too small relative to the text elements. Data source: Telford and Cunningham (1991)" width="1260" />
+<img src="small_axis_labels_files/figure-html/Aus-athletes-big-ugly-1.png" alt="Percent body fat versus height in male athletes. The text elements are fairly large, and their size may be appropriate if the figure is meant to be reproduced at a very small scale. However, the figure overall is not balanced; the points are too small relative to the text elements. Data source: Telford and Cunningham (1991)" width="630" />
 <p class="caption">
 Figure 24.4: Percent body fat versus height in male athletes. The text elements are fairly large, and their size may be appropriate if the figure is meant to be reproduced at a very small scale. However, the figure overall is not balanced; the points are too small relative to the text elements. Data source: <span class="citation">Telford and Cunningham (<a href="#ref-Telford-Cunningham-1991">1991</a>)</span>
 </p>
 </div>
 
 <div class="figure" style="text-align: center"><span id="fig:Aus-athletes-big-good"></span>
-<img src="small_axis_labels_files/figure-html/Aus-athletes-big-good-1.png" alt="Percent body fat versus height in male athletes. All figure elements are sized such that the figure is balanced and can be reproduced at a small scale. Data source: Telford and Cunningham (1991)" width="1260" />
+<img src="small_axis_labels_files/figure-html/Aus-athletes-big-good-1.png" alt="Percent body fat versus height in male athletes. All figure elements are sized such that the figure is balanced and can be reproduced at a small scale. Data source: Telford and Cunningham (1991)" width="630" />
 <p class="caption">
 Figure 24.5: Percent body fat versus height in male athletes. All figure elements are sized such that the figure is balanced and can be reproduced at a small scale. Data source: <span class="citation">Telford and Cunningham (<a href="#ref-Telford-Cunningham-1991">1991</a>)</span>
 </p>
@@ -302,6 +302,7 @@ Always look at scaled-down versions of your figures to make sure the axis labels
 </div>
 <p>I think there is a simple psychological reason for why we routinely make figures whose axis labels are too small, and it relates to large, high-resolution computer monitors. We routinely preview figures on the computer screen, and often we do so while the figure takes up a large amount of space on the screen. In this viewing mode, even comparatively small text seems perfectly fine and legible, and large text can seem awkward and overpowering. In fact, if you take the first figure from this chapter and magnify it to the point where it fills your entire screen, you will likely think that it looks just fine. The solution is to always make sure that you look at your figures at a realistic print size. You can either zoom out so they are only three to five inches in width on your screen, or you can go to the other side of your room and check whether the figure still looks good from a substantial distance.</p>
 
+<pre><code>## Warning: package &#39;dplyr&#39; was built under R version 3.5.2</code></pre>
 </div>
 <h3>References</h3>
 <div id="refs" class="references">

@@ -61,7 +61,7 @@ More generally, mosaic plots assume that all of the proportions shown can be ide
 (ref:US-states-treemap) States in the U.S. visualized as a treemap. Each rectangle represents one state, and the area of each rectangle is proportional to the state's land surface area. The states are grouped into four regions, West, Northeast, Midwest, and South. The coloring is proportional to the number of inhabitants for each state, with darker colors representing larger numbers of inhabitants. Data source: 2010 U.S. Census
 
 <div class="figure" style="text-align: center">
-<img src="nested_proportions_files/figure-html/US-states-treemap-1.png" alt="(ref:US-states-treemap)" width="816" />
+<img src="nested_proportions_files/figure-html/US-states-treemap-1.png" alt="(ref:US-states-treemap)" width="754.285714285714" />
 <p class="caption">(\#fig:US-states-treemap)(ref:US-states-treemap)</p>
 </div>
 
@@ -69,14 +69,14 @@ Both mosaic plots and treemaps are commonly used and can be illuminating, but th
 
 ## Nested pies
 
-At the beginnig of this chapter, I visualized the bridges dataset with a flawed pie chart (Figure \@ref(fig:bridges-pie-wrong)), and I then argued that a mosaic plot or a treemap are more appropriate. However, both of these latter plot types are closely related to pie charts, since they all use area to represent data values. The primary difference is the type of coordinate system, polar in the case of a pie chart versus cartesian in the case of a mosaic plot or treemap. This close relationship between these different plots begs the question whether some variant of a pie chart can be used to visualize this dataset.
+At the beginning of this chapter, I visualized the bridges dataset with a flawed pie chart (Figure \@ref(fig:bridges-pie-wrong)), and I then argued that a mosaic plot or a treemap are more appropriate. However, both of these latter plot types are closely related to pie charts, since they all use area to represent data values. The primary difference is the type of coordinate system, polar in the case of a pie chart versus cartesian in the case of a mosaic plot or treemap. This close relationship between these different plots begs the question whether some variant of a pie chart can be used to visualize this dataset.
 
 There are two possibilities. First, we can draw a pie chart composed of an inner and an outer circle (Figure \@ref(fig:bridges-nested-pie)). The inner circle shows the breakdown of the data by one variable (here, building material) and the outer circle shows the breakdown of each slice of the inner circle by the second variable (here, era of bridge construction). This visualization is reasonable but I have my reservations, and therefore I have labeled it "ugly". Most importantly, the two separate circles obscure the fact that each bridge in the dataset has both a building material and an era of bridge construction. In effect, in Figure \@ref(fig:bridges-nested-pie), we are still double-counting each bridge. If we add up all the numbers shown in the two circles we obtain 212, which is twice the number of bridges in the dataset.
 
 (ref:bridges-nested-pie) Breakdown of bridges in Pittsburgh by construction material (steel, wood, iron, inner circle) and by era of construction (crafts, emerging, mature, modern, outer circle). Numbers represent the counts of bridges within each category. Data source: Yoram Reich and Steven J. Fenves, via the UCI Machine Learning Repository [@UCI_repo_2017]
 
 <div class="figure" style="text-align: center">
-<img src="nested_proportions_files/figure-html/bridges-nested-pie-1.png" alt="(ref:bridges-nested-pie)" width="480" />
+<img src="nested_proportions_files/figure-html/bridges-nested-pie-1.png" alt="(ref:bridges-nested-pie)" width="576" />
 <p class="caption">(\#fig:bridges-nested-pie)(ref:bridges-nested-pie)</p>
 </div>
 
@@ -85,7 +85,7 @@ Alternatively, we can first slice the pie into pieces representing the proportio
 (ref:bridges-nested-pie2) Breakdown of bridges in Pittsburgh by construction material (steel, wood, iron) and by era of construction (crafts, emerging, mature, modern). Numbers represent the counts of bridges within each category.  Data source: Yoram Reich and Steven J. Fenves, via the UCI Machine Learning Repository [@UCI_repo_2017]
 
 <div class="figure" style="text-align: center">
-<img src="nested_proportions_files/figure-html/bridges-nested-pie2-1.png" alt="(ref:bridges-nested-pie2)" width="480" />
+<img src="nested_proportions_files/figure-html/bridges-nested-pie2-1.png" alt="(ref:bridges-nested-pie2)" width="576" />
 <p class="caption">(\#fig:bridges-nested-pie2)(ref:bridges-nested-pie2)</p>
 </div>
 
@@ -98,7 +98,7 @@ When we want to visualize proportions described by more than two categorical var
 (ref:bridges-parallel-sets1) Breakdown of bridges in Pittsburgh by construction material, length, era of construction, and the river they span, shown as a parallel sets plot. The coloring of the bands highlights the construction material of the different bridges. Data source: Yoram Reich and Steven J. Fenves, via the UCI Machine Learning Repository [@UCI_repo_2017]
 
 <div class="figure" style="text-align: center">
-<img src="nested_proportions_files/figure-html/bridges-parallel-sets1-1.png" alt="(ref:bridges-parallel-sets1)" width="576" />
+<img src="nested_proportions_files/figure-html/bridges-parallel-sets1-1.png" alt="(ref:bridges-parallel-sets1)" width="685.714285714286" />
 <p class="caption">(\#fig:bridges-parallel-sets1)(ref:bridges-parallel-sets1)</p>
 </div>
 
@@ -108,7 +108,7 @@ The same visualization looks quite different if we color by a different criterio
 (ref:bridges-parallel-sets2) Breakdown of bridges in Pittsburgh by construction material, length, era of construction, and the river they span. This figure is similar to Figure \@ref(fig:bridges-parallel-sets1) but now the coloring of the bands highlights the river spanned by the different bridges. This figure is labeled "ugly" because the arrangement of the colored bands in the middle of the figure is very busy, and also because the bands need to be read from right to left. Data source: Yoram Reich and Steven J. Fenves, via the UCI Machine Learning Repository [@UCI_repo_2017]
 
 <div class="figure" style="text-align: center">
-<img src="nested_proportions_files/figure-html/bridges-parallel-sets2-1.png" alt="(ref:bridges-parallel-sets2)" width="576" />
+<img src="nested_proportions_files/figure-html/bridges-parallel-sets2-1.png" alt="(ref:bridges-parallel-sets2)" width="685.714285714286" />
 <p class="caption">(\#fig:bridges-parallel-sets2)(ref:bridges-parallel-sets2)</p>
 </div>
 
@@ -117,6 +117,6 @@ I have labeled Figure \@ref(fig:bridges-parallel-sets2) as "ugly" because I thin
 (ref:bridges-parallel-sets3) Breakdown of bridges in Pittsburgh by river, era of construction, length, and construction material. This figure differs from Figure \@ref(fig:bridges-parallel-sets2) only in the order of the parallel sets. However, the modified order results in a figure that is easier to read and less busy. Data source: Yoram Reich and Steven J. Fenves, via the UCI Machine Learning Repository [@UCI_repo_2017]
 
 <div class="figure" style="text-align: center">
-<img src="nested_proportions_files/figure-html/bridges-parallel-sets3-1.png" alt="(ref:bridges-parallel-sets3)" width="576" />
+<img src="nested_proportions_files/figure-html/bridges-parallel-sets3-1.png" alt="(ref:bridges-parallel-sets3)" width="685.714285714286" />
 <p class="caption">(\#fig:bridges-parallel-sets3)(ref:bridges-parallel-sets3)</p>
 </div>

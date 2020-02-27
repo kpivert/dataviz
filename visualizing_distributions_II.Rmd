@@ -15,7 +15,7 @@ As an alternative to using histograms or density plots, we could simply show all
 
 To illustrate cumulative empirical distribution functions, I will begin with a hypothetical example that is closely modeled after something I deal with a lot as a professor in the classroom: a dataset of student grades. Assume our hypothetical class has 50 students, and the students just completed an exam on which they could score between 0 and 100 points. How can we best visualize the class performance, for example to determine appropriate grade boundaries?
 
-We can plot the total number of students that have received at least a certain number of points versus all possible point scores. This plot will be an ascending function, starting at 0 for 0 points and ending at 50 for 100 points. A different way of thinking about this visualization is the following: We can rank all students by the number of points they obtained, in ascending order (so the student with the fewest points receives the lowest rank and the student with the most points the highest), and then plot the rank versus the actual points obtained. The result is an *empirical cumulative distribution function* (ecdf) or simply *cumulative distribution.* Each dot represents one student, and the lines visualize the highest student rank observed for any possible point value (Figure \@ref(fig:student-grades)).
+We can plot the total number of students that have received at most a certain number of points versus all possible point scores. This plot will be an ascending function, starting at 0 for 0 points and ending at 50 for 100 points. A different way of thinking about this visualization is the following: We can rank all students by the number of points they obtained, in ascending order (so the student with the fewest points receives the lowest rank and the student with the most points the highest), and then plot the rank versus the actual points obtained. The result is an *empirical cumulative distribution function* (ecdf) or simply *cumulative distribution.* Each dot represents one student, and the lines visualize the highest student rank observed for any possible point value (Figure \@ref(fig:student-grades)).
 
 (ref:student-grades) Empirical cumulative distribution function of student grades for a hypothetical class of 50 students.
 
@@ -29,6 +29,7 @@ ggplot(student_data, aes(x = points, y = 50*..y..)) +
   geom_point(aes(y = rank), color = "#0072B2") +
   scale_x_continuous(limits = c(40, 102), expand = c(0, 0), breaks = 10*(4:10)) +
   scale_y_continuous(limits = c(-.5, 55), expand = c(0, 0), name = "student rank (ascending)") +
+  coord_cartesian(clip = "off") +
   theme_dviz_grid() +
   theme(axis.line.x = element_blank())
 ```
@@ -44,6 +45,7 @@ ggplot(student_data, aes(x = points, y = 51-50*..y..)) +
   geom_point(aes(y = 51-rank), color = "#0072B2") +
   scale_x_continuous(limits = c(40, 102), expand = c(0, 0), breaks = 10*(4:10)) +
   scale_y_continuous(limits = c(-.5, 55), expand = c(0, 0), name = "student rank (descending)") +
+  coord_cartesian(clip = "off") +
   theme_dviz_grid() +
   theme(axis.line.x = element_blank())
 
@@ -60,6 +62,7 @@ ggplot(student_data, aes(x = points, y = ..y..)) +
   stat_ecdf(geom = "step", color = "#0072B2", size = 0.75) +
   scale_x_continuous(limits = c(40, 102), expand = c(0, 0), breaks = 10*(4:10)) +
   scale_y_continuous(limits = c(-.01, 1.01), expand = c(0, 0), name = "cumulative frequency") +
+  coord_cartesian(clip = "off") +
   theme_dviz_grid() +
   theme(axis.line.x = element_blank())
 ```
@@ -86,6 +89,7 @@ p1 <- ggplot(US_census, aes(x=pop2010)) +
   scale_y_continuous(expand = c(0, 0), name = expression(paste("density [x", 10^-5, "]")),
                      breaks = c(0, 4e-6, 8e-6, 1.2e-5, 1.6e-5),
                      labels = c(0, 0.4, 0.8, 1.2, 1.6)) +
+  coord_cartesian(clip = "off") +
   theme_dviz_grid(12) +
   theme(plot.margin = margin(3, 1.5, 12, 1.5))
 
@@ -96,6 +100,7 @@ p2 <- ggplot(US_census, aes(x=pop2010)) +
                      breaks = 0.5e6*(0:4),
                      labels = label_log10) +
   scale_y_continuous(expand = c(0.01, 0), name = "cumulative frequency") +
+  coord_cartesian(clip = "off") +
   theme_dviz_grid(12) +
   theme(plot.margin = margin(3, 1.5, 12, 1.5))
 
@@ -114,6 +119,7 @@ p1_log <- ggplot(US_census, aes(x=log10(pop2010))) +
     name = expression(paste("log"["10"], "(number of inhabitants)"))
   ) +
   scale_y_continuous(expand = c(0, 0), name = "density") +
+  coord_cartesian(clip = "off") +
   theme_dviz_grid(12) +
   theme(plot.margin = margin(3, 1.5, 12, 1.5))
 
@@ -124,6 +130,7 @@ p2_log <- ggplot(US_census, aes(x=log10(pop2010))) +
     name = expression(paste("log"["10"], "(number of inhabitants)"))
   ) +
   scale_y_continuous(expand = c(0.01, 0), name = "cumulative frequency") +
+  coord_cartesian(clip = "off") +
   theme_dviz_grid(12) +
   theme(plot.margin = margin(3, 1.5, 12, 1.5))
 
